@@ -3,14 +3,14 @@
 
 class Button {
   private:
-    byte ButtonPin;
+    byte pin;
   public:
-    pin() {} //var
-    pin(byte ButtonPin) {
-      this->pin = ButtonPin;
+    Button() {} //var
+    Button(byte pin) {
+      this->pin = pin;
     }
     void init() {
-      pinMode(Button_pin, INPUT);
+      pinMode(pin, INPUT);
     }
     void init(byte defaultState) {
     init();
