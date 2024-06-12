@@ -4,10 +4,12 @@
 PushButton::Button(byte pin) {
   this->pin = pin;
 }
-void PushButton::init() {
+
+
+PushButton::init() {
   pinMode(pin, INPUT_PULLUP);
-  isPressed();
 }
+
 void PushButton::init(byte defaultState) {
 init();
 if (defaultState == 1) {

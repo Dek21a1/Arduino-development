@@ -2,19 +2,21 @@
 
 #include "push_button.h"
 
-PushButton button(BUTTON_PIN);
+PushButton Button(BUTTON_PIN);
 
 void setup() {
   Serial.begin(115200);
-  button.init();
+  PushButton.init();
 }
 
 void loop() {
-  if (button.isPressed()) {
-    Serial.println("Button is pressed");
-  }
-  else {
-    Serial.println("button is not pressed");
-  }
-  delay (100);
+//  if (PushButton.isPressed()) {
+//  Serial.println("Button is pressed");
+//}
+//else {
+//  Serial.println("button is not pressed");
+//}
+//delay (100);
+println(PushButton.isPressed());
+delay (100);
 }
