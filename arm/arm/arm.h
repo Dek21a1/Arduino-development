@@ -3,12 +3,17 @@
 #define ARM_H
 
 #include <Arduino.h>
+#include <Servo.h>
+#include <Wire.h>
 
 class arm {
-  public:
-    void action(type, servo);
   private:
-    servo ServoSign;
+    int pin;
+  public:
+    void init(int pin);
+
+    void action(type, int pin);
+  
 };
 
 #endif
