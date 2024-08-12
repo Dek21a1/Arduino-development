@@ -1,13 +1,12 @@
-//#include "arm.h"
-//#include <Servo.h>
-//#include <Wire.h>
+#include "arm.h"
+#include <Servo.h>
+#include <Wire.h>
 
-//arm::arm(int pin) {
-//  int pin[] = {5, 6, 9, 10, 11}
+//arm::arm(byte arm) {
+  //this->arm = arm[]
 //}
 
 //void arm::init(int pin) {
 
- // Servo.write(90);
 //}
 
