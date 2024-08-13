@@ -28,15 +28,36 @@ void setup() {
   Servo3.attach(9);
   Servo4.attach(10);
   Servo5.attach(11);
+  Servo5.write(40);
+  delay(2000);
+  Servo5.write(80);
+  delay(2000);
+  Servo5.write(default1);
+  delay(5000);
+  Servo4.write(0);
+  delay(2000);
+  Servo4.write(180);
+  delay(2000);
+  Servo4.write(default1);
+  delay(5000);
+  Servo3.write(0);
+  delay(2000);
+  Servo3.write(180);
+  delay(2000);
+  Servo3.write(default1);
+  delay(5000);
+  Servo2.write(0);
+  delay(2000);
+  Servo2.write(180);
+  delay(2000);
+  Servo2.write(default1);
+  delay(5000);
+  Servo1.write(0);
+  delay(2000);
+  Servo1.write(180);
+  delay(2000);
   Servo1.write(default1);
   delay(5000);
-  Servo2.write(default2);
-  delay(5000);
-  Servo3.write(default3);
-  delay(5000);
-  Servo4.write(default4);
-  delay(5000);
-  Servo5.write(default5);
 }
 
 void loop() {
