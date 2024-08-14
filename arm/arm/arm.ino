@@ -7,8 +7,8 @@ byte gammatable[256];
 Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
 
 #define default1 102
-#define default2 97
-#define default3 96
+#define default2 93
+#define default3 92
 #define default4 101
 #define default5 40
 #define grab 80
@@ -62,8 +62,8 @@ void setup() {
 
 void loop() {
   Servo5.write(grab);
-  Servo1.write(0);
+  Servo3.write(0);
   delay(5000);
-   Servo1.write(180);
+   Servo3.write(180);
   delay(5000);
 }
