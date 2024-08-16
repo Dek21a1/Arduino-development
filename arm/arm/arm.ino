@@ -84,12 +84,18 @@ void loop() {
 
   tcs.getRGB(&red, &green, &blue);
 
-  Serial.print("R:\t"); Serial.print(int(red)); 
-  Serial.print("\tG:\t"); Serial.print(int(green)); 
-  Serial.print("\tB:\t"); Serial.print(int(blue));
-
-  Serial.print("\n");
-
+if (int(red) >= 100) {
+  Serial.print("block is red"); Serial.println(int(red));
+}
+else if (int(green) >= 100) {
+  Serial.print("block is green"); Serial.println(int(green));
+}
+else if (int(blue) >= 100) {
+  Serial.print("block is blue"); Serial.println(int(blue));
+}
+else {
+  Serial.println("no block recognised"); 
+}
   //Servo5.write(grab);
   //Servo3.write(0);
   //delay(5000);
