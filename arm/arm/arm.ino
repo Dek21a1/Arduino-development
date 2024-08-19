@@ -6,12 +6,12 @@
 byte gammatable[256];
 Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
 
-#define default1 102
-#define default2 93
-#define default3 92
-#define default4 101
+#define default1 90
+#define default2 90
+#define default3 90
+#define default4 90
 #define default5 40
-#define grab 80
+#define grab 82
 
 //arm ARM({default1, default2, default3, default4, default5});
 
@@ -23,6 +23,18 @@ Servo Servo5;
 
 void setup() {
   Serial.begin(9600);
+Servo1.attach(5);
+Servo2.attach(6);
+Servo3.attach(9);
+Servo4.attach(10);
+Servo5.attach(11);
+Servo5.write(40);
+Servo5.write(default5);
+Servo4.write(default1);
+Servo3.write(default1);
+Servo2.write(default1);
+Servo1.write(default1);
+delay(5000);
     if (tcs.begin()) {
     //Serial.println("Found sensor");
   } else {
@@ -40,41 +52,7 @@ void setup() {
     gammatable[i] = 255 - x;
 
   }
-//Servo1.attach(5);
-//Servo2.attach(6);
-//Servo3.attach(9);
-//Servo4.attach(10);
-//Servo5.attach(11);
-//Servo5.write(40);
-//delay(2000);
-//Servo5.write(80);
-//delay(2000);
-//Servo5.write(default1);
-//delay(5000);
-//Servo4.write(0);
-//delay(2000);
-//Servo4.write(180);
-//delay(2000);
-//Servo4.write(default1);
-//delay(5000);
-//Servo3.write(0);
-//delay(2000);
-//Servo3.write(180);
-//delay(2000);
-//Servo3.write(default1);
-//delay(5000);
-//Servo2.write(0);
-//delay(2000);
-//Servo2.write(180);
-//delay(2000);
-//Servo2.write(default1);
-//delay(5000);
-//Servo1.write(0);
-//delay(2000);
-//Servo1.write(180);
-//delay(2000);
-//Servo1.write(default1);
-//delay(5000);
+
 }
 
 void loop() {
@@ -84,21 +62,31 @@ void loop() {
 
   tcs.getRGB(&red, &green, &blue);
 
-if (int(red) >= 100) {
-  Serial.print("block is red"); Serial.println(int(red));
+if (int(red) >= 160) {
+  Serial.print("block is red "); Serial.println(int(red));
+  delay(200);
+    Servo2.write(55);
+    delay(500);
+    Servo3.write(140);
+    delay(500);
+    Servo4.write(145);
+    delay(500);
+    Servo5.write(grab);
+    delay(2000);
+    Servo2.write(default1);
+    Servo3.write(default1);
+    Servo4.write(default1);
+    delay(2000);
+
 }
 else if (int(green) >= 100) {
-  Serial.print("block is green"); Serial.println(int(green));
+  Serial.print("block is green "); Serial.println(int(green));
 }
 else if (int(blue) >= 100) {
-  Serial.print("block is blue"); Serial.println(int(blue));
+  Serial.print("block is blue "); Serial.println(int(blue));
 }
 else {
   Serial.println("no block recognised"); 
 }
-  //Servo5.write(grab);
-  //Servo3.write(0);
-  //delay(5000);
-  // Servo3.write(180);
-  //delay(5000);
+
 }
