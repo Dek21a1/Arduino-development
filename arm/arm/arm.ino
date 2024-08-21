@@ -76,14 +76,99 @@ if (int(red) >= 160) {
     Servo2.write(default1);
     Servo3.write(default1);
     Servo4.write(default1);
+  if (int(red) >=160) {
+    break;
+  }
+  else {
+    Servo1.write(180);
     delay(2000);
-
+    Servo2.write(55);
+    delay(500);
+    Servo3.write(140);
+    delay(500);
+    Servo4.write(145);
+    delay(500);
+    Servo5.write(default5);
+    delay(2000);
+    Servo1.write(default1);
+    Servo2.write(default1);
+    Servo3.write(default1);
+    Servo4.write(default1);
+    delay(2000);
+    break;
+  }
 }
 else if (int(green) >= 100) {
   Serial.print("block is green "); Serial.println(int(green));
+  delay(200);
+    Servo2.write(55);
+    delay(500);
+    Servo3.write(140);
+    delay(500);
+    Servo4.write(145);
+    delay(500);
+    Servo5.write(grab);
+    delay(2000);
+    Servo2.write(default1);
+    Servo3.write(default1);
+    Servo4.write(default1);
+  if (int(green) >= 100) {
+    break;
+  }
+  else {
+    Servo1.write(0);
+    delay(2000);
+    Servo2.write(55);
+    delay(500);
+    Servo3.write(140);
+    delay(500);
+    Servo4.write(145);
+    delay(500);
+    Servo5.write(default5);
+    delay(2000);
+    Servo1.write(default1);
+    Servo2.write(default1);
+    Servo3.write(default1);
+    Servo4.write(default1);
+    delay(2000);
+    break;
+  }
+
 }
 else if (int(blue) >= 100) {
   Serial.print("block is blue "); Serial.println(int(blue));
+  delay(200);
+    Servo2.write(55);
+    delay(500);
+    Servo3.write(140);
+    delay(500);
+    Servo4.write(145);
+    delay(500);
+    Servo5.write(grab);
+    delay(2000);
+    Servo2.write(default1);
+    Servo3.write(default1);
+    Servo4.write(default1);
+    if(int(blue) >= 100) {
+      break;
+    }
+    else {
+    delay(2000);
+    Servo2.write(125);
+    delay(500);
+    Servo3.write(40);
+    delay(500);
+    Servo4.write(45);
+    delay(500);
+    Servo5.write(default5);
+    delay(2000);
+    Servo1.write(default1);
+    Servo2.write(default1);
+    Servo3.write(default1);
+    Servo4.write(default1);
+    delay(2000);
+    break;
+    }
 }
 else {
   Serial.println("no block recognised"); 
