@@ -1,7 +1,7 @@
 #include <Servo.h>
 #include "Adafruit_TCS34725.h"
 #include <Wire.h>
-//#include "arm.h"
+#include "arm.h"
 
 byte gammatable[256];
 Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
@@ -13,21 +13,11 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS3472
 #define default5 40
 #define grab 82
 
-//arm ARM({default1, default2, default3, default4, default5});
+arm action(5, 6, 9, 10, 11)
 
-Servo Servo1;
-Servo Servo2;
-Servo Servo3;
-Servo Servo4;
-Servo Servo5;
 
 void setup() {
-  Serial.begin(9600);
-Servo1.attach(5);
-Servo2.attach(6);
-Servo3.attach(9);
-Servo4.attach(10);
-Servo5.attach(11);
+Serial.begin(9600);
 Servo5.write(40);
 Servo5.write(default5);
 Servo4.write(default1);
@@ -76,10 +66,6 @@ if (int(red) >= 160) {
     Servo2.write(default1);
     Servo3.write(default1);
     Servo4.write(default1);
-  if (int(red) >=160) {
-    break;
-  }
-  else {
     Servo1.write(180);
     delay(2000);
     Servo2.write(55);
@@ -95,7 +81,6 @@ if (int(red) >= 160) {
     Servo3.write(default1);
     Servo4.write(default1);
     delay(2000);
-    break;
   }
 }
 else if (int(green) >= 100) {
@@ -112,10 +97,6 @@ else if (int(green) >= 100) {
     Servo2.write(default1);
     Servo3.write(default1);
     Servo4.write(default1);
-  if (int(green) >= 100) {
-    break;
-  }
-  else {
     Servo1.write(0);
     delay(2000);
     Servo2.write(55);
@@ -131,7 +112,6 @@ else if (int(green) >= 100) {
     Servo3.write(default1);
     Servo4.write(default1);
     delay(2000);
-    break;
   }
 
 }
@@ -149,10 +129,6 @@ else if (int(blue) >= 100) {
     Servo2.write(default1);
     Servo3.write(default1);
     Servo4.write(default1);
-    if(int(blue) >= 100) {
-      break;
-    }
-    else {
     delay(2000);
     Servo2.write(125);
     delay(500);
@@ -167,7 +143,6 @@ else if (int(blue) >= 100) {
     Servo3.write(default1);
     Servo4.write(default1);
     delay(2000);
-    break;
     }
 }
 else {
