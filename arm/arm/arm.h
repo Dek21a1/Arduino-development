@@ -8,15 +8,13 @@
 #include "arm.h"
 #include <Wire.h>
 
-class arm : public Servo 
-{
+class arm : public Servo {
   private:
     int neutral;
     int neutral1;
     int use;
   public:
-    arm(int servo1, int servo2, int servo3, int servo4, int servo5);
-    void neutral(int neutral, int neutral1, int use);
+    void servo_init(int servo1, int servo2, int servo3, int servo4, int servo5);
 };
 
 #endif

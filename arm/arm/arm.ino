@@ -11,12 +11,11 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS3472
 #define grab 82
 
 
-arm action(5, 6, 9, 10, 11);
-
+arm arm(default_arm, default_claw, grab);
 
 void setup() {
 Serial.begin(9600);
-action.neutral()
+arm.servo_init(5, 6, 9, 10, 11);
 delay(5000);
     if (tcs.begin()) {
     //Serial.println("Found sensor");

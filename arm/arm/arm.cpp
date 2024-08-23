@@ -9,14 +9,19 @@ Servo Servo4;
 Servo Servo5;
 
 
-arm::arm(int neutral, int neutral1, int use)
+arm::arm(int neutral)
 {
   this->neutral = neutral;
+}
+arm::arm(int neutral1)
+{
   this->neutral1 = neutral1;
+}
+arm::arm(int use)
+{
   this->use = use;
 }
-
-arm::arm(int servo1, int servo2, int servo3, int servo4, int servo5)
+void arm::servo_init(int servo1, int servo2, int servo3, int servo4, int servo5)
 {
   Servo1.attach(servo1);
   Servo2.attach(servo2);
@@ -24,7 +29,12 @@ arm::arm(int servo1, int servo2, int servo3, int servo4, int servo5)
   Servo4.attach(servo4);
   Servo5.attach(servo5);
 }
-arm::void neutral(int neutral, int neutral1, int use)
+
+void arm::servo_pin()
+{
+
+}
+void arm::neutral()
 {
   Servo1.write()
 }
