@@ -6,16 +6,11 @@
 byte gammatable[256];
 Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
 
-#define default_arm 90
-#define default_claw 40
-#define grab 82
-
-
-arm arm(default_arm, default_claw, grab);
+pin_action 
 
 void setup() {
 Serial.begin(9600);
-arm.servo_init(5, 6, 9, 10, 11);
+pin_action.servo_init(5, 6, 9, 10, 11);
 delay(5000);
     if (tcs.begin()) {
     //Serial.println("Found sensor");
