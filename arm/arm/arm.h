@@ -9,15 +9,33 @@
 
 
 
-class pin_action : public Servo {
+class arm : public Servo {
+  private:
+  int neutral;
+  int neutral1;
+  int use;
+
+  int Pservo1;
+  int Pservo2;
+  int Pservo3;
+  int Pservo4;
+  int Pservo5;
+
   public:
-    void servo_init(int servo1, int servo2, int servo3, int servo4, int servo5);
-    void servo_neutral(int neutral, int neutral1, int use);
-    void sensor_red();
-    void sensor_green();
-    void sensor_blue(int neutral1);
-    void grab(int neutral, int neutral1, int use);
-    void release(int neutral, int neutral1, int use);
+    arm() {} //var
+    arm(int neutral, int neutral1, int use, int Pservo1, int Pservo2, int Pservo3, int Pservo4, int Pservo5); 
+    void servo_init();        //initalise servos
+    void servo_neutral();     //set all servos to neutral
+    void sensor_red();        //moves if object is red 
+    void sensor_green();      //moves if object is green
+    void sensor_blue();       //moves if object is blue
+    void grab();              //claw grab move
+    void release();           //claw release move
+};
+
+class colour_action : public arm {
+  public:
+  void clr(int val);
 };
 
 #endif

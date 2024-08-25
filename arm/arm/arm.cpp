@@ -10,26 +10,39 @@ Servo Servo5;
 
 
 
-void pin_action::servo_init(int servo1, int servo2, int servo3, int servo4, int servo5)
+arm::arm(int neutral, int neutral1, int use, int Pservo1, int Pservo2, int Pservo3, int Pservo4, int Pservo5)
 {
-  Servo1.attach(servo1);
-  Servo2.attach(servo2);
-  Servo3.attach(servo3);
-  Servo4.attach(servo4);
-  Servo5.attach(servo5);
+  this->neutral = neutral;
+  this->neutral1 = neutral1;
+  this->use = use;
+  this->Pservo1 = Pservo1;
+  this->Pservo2 = Pservo2;
+  this->Pservo3 = Pservo3;
+  this->Pservo4 = Pservo4;
+  this->Pservo5 = Pservo5;
 }
 
-void pin_action::sensor_red()
+
+void arm::servo_init()
+{
+  Servo1.attach(Pservo1);
+  Servo2.attach(Pservo2);
+  Servo3.attach(Pservo3);
+  Servo4.attach(Pservo4);
+  Servo5.attach(Pservo5);
+}
+
+void arm::sensor_red()
 {
   Servo1.write(180);
 }
 
-void pin_action::sensor_green()
+void arm::sensor_green()
 {
   Servo1.write(0);
 }
 
-void pin_action::sensor_blue(int neutral1)
+void arm::sensor_blue()
 {
     Servo2.write(125);
     delay(500);
@@ -40,7 +53,7 @@ void pin_action::sensor_blue(int neutral1)
     Servo5.write(neutral1);
     delay(2000);
 }
-void pin_action::servo_neutral(int neutral, int neutral1, int use)
+void arm::servo_neutral()
 {
   Servo1.write(neutral);
   Servo2.write(neutral);
@@ -51,7 +64,7 @@ void pin_action::servo_neutral(int neutral, int neutral1, int use)
   delay(2000);
 }
 
-void pin_action::grab(int neutral, int neutral1, int use)
+void arm::grab()
 {
   delay(200);
   Servo2.write(55);
@@ -67,10 +80,8 @@ void pin_action::grab(int neutral, int neutral1, int use)
   Servo4.write(neutral);
 }
 
-void pin_action::release(int neutral, int neutral1, int use)
+void arm::release()
 {
-  delay(200);
-  Servo1.write(180);
   delay(2000);
   Servo2.write(55);
   delay(500);
@@ -78,4 +89,7 @@ void pin_action::release(int neutral, int neutral1, int use)
   delay(500);
   Servo4.write(145);
   delay(500);
+  Servo5.write(neutral1);
+  delay(500);
 }
+
