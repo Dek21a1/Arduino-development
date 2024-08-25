@@ -10,11 +10,11 @@ Servo Servo5;
 
 
 
-arm::arm(int neutral, int neutral1, int use, int Pservo1, int Pservo2, int Pservo3, int Pservo4, int Pservo5)
+arm::arm(int neutral, int open, int closed, int Pservo1, int Pservo2, int Pservo3, int Pservo4, int Pservo5)
 {
   this->neutral = neutral;
-  this->neutral1 = neutral1;
-  this->use = use;
+  this->open = open;
+  this->closed = closed;
   this->Pservo1 = Pservo1;
   this->Pservo2 = Pservo2;
   this->Pservo3 = Pservo3;
@@ -50,7 +50,7 @@ void arm::sensor_blue()
     delay(500);
     Servo4.write(45);
     delay(500);
-    Servo5.write(neutral1);
+    Servo5.write(open);
     delay(2000);
 }
 void arm::servo_neutral()
@@ -59,8 +59,8 @@ void arm::servo_neutral()
   Servo2.write(neutral);
   Servo3.write(neutral);
   Servo4.write(neutral);
-  Servo5.write(use);
-  Servo5.write(neutral1);
+  Servo5.write(closed);
+  Servo5.write(open);
   delay(2000);
 }
 
@@ -73,7 +73,7 @@ void arm::grab()
   delay(500);
   Servo4.write(145);
   delay(500);
-  Servo5.write(use);
+  Servo5.write(closed);
   delay(2000);
   Servo2.write(neutral);
   Servo3.write(neutral);
@@ -89,7 +89,7 @@ void arm::release()
   delay(500);
   Servo4.write(145);
   delay(500);
-  Servo5.write(neutral1);
+  Servo5.write(open);
   delay(500);
 }
 

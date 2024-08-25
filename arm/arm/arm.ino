@@ -7,8 +7,8 @@ byte gammatable[256];
 Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
 
 #define neutral 90
-#define neutral1 40
-#define use 82
+#define open 40
+#define closed 82
 #define Pservo1 5
 #define Pservo2 6
 #define Pservo3 9
@@ -18,7 +18,7 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS3472
 #define g 1
 #define b 2
 
-arm action(neutral, neutral1, use, Pservo1, Pservo2, Pservo3, Pservo4, Pservo5);
+arm action(neutral, open, closed, Pservo1, Pservo2, Pservo3, Pservo4, Pservo5);
 colour_action Colour_action;
 
 void setup() {

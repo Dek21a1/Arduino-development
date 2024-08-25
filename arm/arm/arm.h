@@ -12,8 +12,8 @@
 class arm : public Servo {
   private:
   int neutral;
-  int neutral1;
-  int use;
+  int open;
+  int closed;
 
   int Pservo1;
   int Pservo2;
@@ -23,7 +23,7 @@ class arm : public Servo {
 
   public:
     arm() {} //var
-    arm(int neutral, int neutral1, int use, int Pservo1, int Pservo2, int Pservo3, int Pservo4, int Pservo5); 
+    arm(int neutral, int open, int closed, int Pservo1, int Pservo2, int Pservo3, int Pservo4, int Pservo5); 
     void servo_init();        //initalise servos
     void servo_neutral();     //set all servos to neutral
     void sensor_red();        //moves if object is red 
