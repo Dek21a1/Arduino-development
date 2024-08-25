@@ -6,11 +6,16 @@
 byte gammatable[256];
 Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
 
-pin_action 
+#define neutral 90
+#define neutral1 40
+#define use 82
+
+pin_action action;
 
 void setup() {
 Serial.begin(9600);
-pin_action.servo_init(5, 6, 9, 10, 11);
+action.servo_init(5, 6, 9, 10, 11);
+action.servo_neutral(neutral, neutral1, use);
 delay(5000);
     if (tcs.begin()) {
     //Serial.println("Found sensor");
@@ -27,7 +32,6 @@ delay(5000);
     x *= 255;
 
     gammatable[i] = 255 - x;
-
   }
 
 }
@@ -41,99 +45,30 @@ void loop() {
 
 if (int(red) >= 160) {
   Serial.print("block is red "); Serial.println(int(red));
+  action.grab(neutral, neutral1, use);
   delay(200);
-    Servo2.write(55);
-    delay(500);
-    Servo3.write(140);
-    delay(500);
-    Servo4.write(145);
-    delay(500);
-    Servo5.write(grab);
-    delay(2000);
-    Servo2.write(default1);
-    Servo3.write(default1);
-    Servo4.write(default1);
-    Servo1.write(180);
-    delay(2000);
-    Servo2.write(55);
-    delay(500);
-    Servo3.write(140);
-    delay(500);
-    Servo4.write(145);
-    delay(500);
-    Servo5.write(default5);
-    delay(2000);
-    Servo1.write(default1);
-    Servo2.write(default1);
-    Servo3.write(default1);
-    Servo4.write(default1);
-    delay(2000);
-  }
+  action.sensor_red();
+  action.release(neutral, neutral1, use);
+  action.servo_neutral(neutral, neutral1, use);
 }
+
 else if (int(green) >= 100) {
   Serial.print("block is green "); Serial.println(int(green));
-  delay(200);
-    Servo2.write(55);
-    delay(500);
-    Servo3.write(140);
-    delay(500);
-    Servo4.write(145);
-    delay(500);
-    Servo5.write(grab);
-    delay(2000);
-    Servo2.write(default1);
-    Servo3.write(default1);
-    Servo4.write(default1);
-    Servo1.write(0);
-    delay(2000);
-    Servo2.write(55);
-    delay(500);
-    Servo3.write(140);
-    delay(500);
-    Servo4.write(145);
-    delay(500);
-    Servo5.write(default5);
-    delay(2000);
-    Servo1.write(default1);
-    Servo2.write(default1);
-    Servo3.write(default1);
-    Servo4.write(default1);
-    delay(2000);
-  }
-
+  action.grab(neutral, neutral1, use);
+  delay(2000);
+  action.sensor_green();
+  action.release(neutral, neutral1, use);
+  action.servo_neutral(neutral, neutral1, use);
 }
+
 else if (int(blue) >= 100) {
   Serial.print("block is blue "); Serial.println(int(blue));
-  delay(200);
-    Servo2.write(55);
-    delay(500);
-    Servo3.write(140);
-    delay(500);
-    Servo4.write(145);
-    delay(500);
-    Servo5.write(grab);
-    delay(2000);
-    Servo2.write(default1);
-    Servo3.write(default1);
-    Servo4.write(default1);
-    delay(2000);
-    Servo2.write(125);
-    delay(500);
-    Servo3.write(40);
-    delay(500);
-    Servo4.write(45);
-    delay(500);
-    Servo5.write(default5);
-    delay(2000);
-    Servo1.write(default1);
-    Servo2.write(default1);
-    Servo3.write(default1);
-    Servo4.write(default1);
-    delay(2000);
-    }
+  action.grab(neutral, neutral1, use);
+  delay(2000);
+  action.sensor_blue(neutral1);
+  action.servo_neutral(neutral, neutral1, use);
 }
 else {
   Serial.println("no block recognised"); 
 }
-
 }
